@@ -74,11 +74,11 @@ drop_options_scene = [{'label':key,'value':key} for key in scene_numbers]
 
 current_classifications = {}
 
-for scene_number,classified_point_list_file in classified_point_list_files.items():
-    classified_point_list_df = pd.read_csv(classified_point_list_file)
+# for scene_number,classified_point_list_file in classified_point_list_files.items():
+#     classified_point_list_df = pd.read_csv(classified_point_list_file)
 
-    current_classifications[scene_number] = classified_point_list_df['classification'].tolist()
-
+#     current_classifications[scene_number] = classified_point_list_df['classification'].tolist()
+current_classifications = {key:val['classification'].tolist() for key,val in classified_point_list_dfs.items()}
 app.layout = html.Div([
 dcc.Dropdown(id= 'scene_number',
 options=drop_options_scene,
@@ -160,7 +160,7 @@ def scene_changer(scene_number):
     # Output(component_id='specific_point', component_property='children'),
     Output(component_id='g1', component_property='figure'),
     Output(component_id='g2', component_property='figure'),
-    Output(component_id='classification', component_property='value'),
+    Output(component_id='classification', component_property='children'),
     Input(component_id='point_number', component_property='value'),prevent_initial_call=True
 )
 
