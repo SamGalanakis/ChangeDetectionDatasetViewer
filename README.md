@@ -1,4 +1,4 @@
-# ChangeDetectionDatasetViewer
+# Change detection dataset viewer
 
 
 In order to start the viewer follow the following steps:
