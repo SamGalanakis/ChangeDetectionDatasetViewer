@@ -12,3 +12,6 @@ In order to start the viewer follow the following steps:
 5. Open the local server address shown in terminal with browser
 6. Select scene number with first dropdown
 7. Select point of interest number from second dropdown
+
+
+![exampleUI](example_ui.png)
