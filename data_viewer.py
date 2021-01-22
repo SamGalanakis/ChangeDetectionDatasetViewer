@@ -70,7 +70,7 @@ app = dash.Dash(__name__,external_stylesheets=external_stylesheets,suppress_call
 
 
 drop_options_scene = [{'label':key,'value':key} for key in scene_numbers]
-
+drop_options_scene = sorted(drop_options_scene,key=lambda x:x['label'])
 
 current_classifications = {}
 
