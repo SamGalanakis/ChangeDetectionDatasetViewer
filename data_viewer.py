@@ -84,7 +84,8 @@ dcc.Dropdown(id= 'scene_number',
 options=drop_options_scene,
 multi=False,
 value = '0',
-style ={'width':'20%'}),
+style ={'width':'20%'},
+searchable = False),
 html.Div(id='once_chosen_scene_div'),
 
 html.Div(id='placeholder', style={"display":"none"}),
@@ -125,6 +126,7 @@ def scene_changer(scene_number):
 
     
     drop_options_classifiation = [{'label':key,'value':key} for key in class_labels]
+    
     drop_options_point_number = [{'label':key,'value':key} for key in range(classified_point_list_dfs[i].shape[0])]
     
     once_chosen_scene_div = html.Div([
@@ -134,7 +136,9 @@ def scene_changer(scene_number):
     options=drop_options_point_number,
     multi=False,
     value = '0',
-    style ={'width':'20%'}),
+    style ={'width':'20%'},
+    searchable = False
+    ),
 
     html.Div(id='specific_point',children=[html.Div([
     html.H3(current_classifications[i][current_point_number],id = 'classification'),
@@ -166,11 +170,15 @@ def scene_changer(scene_number):
 
 
 def point_changer(point_number):
+    
+    
 
 
     global current_point_number
     global current_scene_number
     global drop_options_classifiation
+
+    assert point_number in range(classified_point_list_dfs[current_scene_number].shape[0]), "Invalid drop option"
     current_point_number = int(point_number)
      
     fig_1 = current_figure_tuples[current_point_number][0]
