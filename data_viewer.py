@@ -37,8 +37,10 @@ classified_point_list_dfs = {scene_num:pd.read_csv(path) for scene_num,path in z
 
 files_dir_1 = [os.path.join(dir_1,f) for f in os.listdir(dir_1) if os.path.isfile(os.path.join(dir_1, f)) and f.split(".")[-1]=='las']
 files_dir_2 = [os.path.join(dir_2,f) for f in os.listdir(dir_2) if os.path.isfile(os.path.join(dir_2, f))and f.split(".")[-1]=='las']
-files_dir_1 = sorted(files_dir_1,key=lambda x: int(os.path.basename(x).split("_")[0]))
-files_dir_2 = sorted(files_dir_2,key=lambda x: int(os.path.basename(x).split("_")[0]))
+files_dir_1 = {int(os.path.basename(x.split("_")[0])):x for x in files_dir_1}
+files_dir_2 = {int(os.path.basename(x.split("_")[0])):x for x in files_dir_2}
+
+
 
 
 
